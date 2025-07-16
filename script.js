@@ -1,4 +1,3 @@
-// Create the "Get Total Price" button
 const getSumBtn = document.createElement("button");
 getSumBtn.textContent = "Get Total Price";
 document.body.appendChild(getSumBtn);
@@ -13,16 +12,18 @@ const getSum = () => {
 
   const table = document.querySelector("table");
 
-  
-  if (table.lastElementChild && table.lastElementChild.className === "total") {
-    table.removeChild(table.lastElementChild);
+  // Remove any previously added total row (we’ll give it the id "ans")
+  const existingTotalRow = document.getElementById("ans");
+  if (existingTotalRow) {
+    existingTotalRow.remove();
   }
 
+  // Create a new total row and assign the id "ans"
   const totalRow = document.createElement("tr");
-  totalRow.className = "total";
+  totalRow.id = "ans"; // id as required by the test
   const totalCell = document.createElement("td");
-  totalCell.colSpan = 2; 
-  totalCell.textContent = total; 
+  totalCell.colSpan = 2; // assuming 2 columns
+  totalCell.textContent = total;
 
   totalRow.appendChild(totalCell);
   table.appendChild(totalRow);
